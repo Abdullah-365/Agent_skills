@@ -1,0 +1,8 @@
+# secrets and per-user data - never commit
+*.env
+.env
+**/keys/
+**/labs/
+__pycache__/
+*.pyc
+*.zip
