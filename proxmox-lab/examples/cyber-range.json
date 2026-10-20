@@ -1,0 +1,15 @@
+{
+  "_comment": "Air-gapped range (no internet). Attacker is dual-homed so you can reach it from your LAN. dc01 needs a Windows Server ISO + virtio-win ISO on the node - adjust the names to match `pve.py iso list`; it is created but not started so you can run the installer from the Proxmox console.",
+  "lab": "range",
+  "networks": {
+    "range": {"isolated": true, "cidr": "auto", "nat": false},
+    "home":  {"bridge": "auto", "dhcp": true}
+  },
+  "machines": [
+    {"name": "range-attacker", "type": "vm", "template": "ubuntu-24.04", "memory": "4G", "disk": "30G",
+     "nets": [{"net": "home", "ip": "dhcp"}, {"net": "range"}]},
+    {"name": "range-dc01", "type": "vm", "iso": "server_2022", "virtio_iso": "virtio-win", "ostype": "win11",
+     "cores": 2, "memory": "4G", "disk": "60G", "nets": ["range"], "start": false},
+    {"name": "range-target", "type": "ct", "template": "ubuntu-24.04", "count": 2, "nets": ["range"]}
+  ]
+}

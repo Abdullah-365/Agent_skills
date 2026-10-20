@@ -1,0 +1,14 @@
+{
+  "_comment": "Load balancer on the LAN in front of two app containers and a database VM on a private network.",
+  "lab": "web",
+  "networks": {
+    "lan":  {"isolated": true, "cidr": "auto", "nat": true},
+    "home": {"bridge": "auto", "dhcp": true}
+  },
+  "machines": [
+    {"name": "web-lb", "type": "ct", "template": "debian-12", "memory": "512M",
+     "nets": [{"net": "home", "ip": "dhcp"}, {"net": "lan"}]},
+    {"name": "web-app", "type": "ct", "template": "debian-12", "count": 2, "memory": "1G", "nets": ["lan"]},
+    {"name": "web-db", "type": "vm", "template": "ubuntu-24.04", "memory": "4G", "disk": "40G", "nets": ["lan"]}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "_comment": "3-node Kubernetes playground on an isolated NAT network, reachable through k8s-jump.",
+  "lab": "k8s",
+  "networks": {
+    "lan":  {"isolated": true, "cidr": "auto", "nat": true},
+    "home": {"bridge": "auto", "dhcp": true}
+  },
+  "defaults": {"vm": {"template": "ubuntu-24.04", "cores": 2, "memory": "4G", "disk": "30G"}},
+  "machines": [
+    {"name": "k8s-jump", "type": "ct", "template": "debian-12", "memory": "256M", "disk": "4G",
+     "nets": [{"net": "home", "ip": "dhcp"}, {"net": "lan"}]},
+    {"name": "k8s-cp", "type": "vm", "nets": ["lan"]},
+    {"name": "k8s-worker", "type": "vm", "count": 2, "nets": ["lan"]}
+  ]
+}

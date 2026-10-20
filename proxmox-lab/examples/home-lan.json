@@ -1,0 +1,9 @@
+{
+  "_comment": "Machines directly on your LAN (DHCP from your router).",
+  "lab": "dev",
+  "network": {"bridge": "auto", "dhcp": true},
+  "machines": [
+    {"name": "dev-docker", "type": "vm", "template": "ubuntu-24.04", "cores": 4, "memory": "8G", "disk": "60G"},
+    {"name": "dev-dns", "type": "ct", "template": "debian-12", "memory": "512M"}
+  ]
+}
