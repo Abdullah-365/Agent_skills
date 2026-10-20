@@ -6,6 +6,7 @@ Open-source skills for AI agents (Claude Code, Claude apps/Cowork, and other age
 | Skill | What it does |
 |---|---|
 | [proxmox-lab](proxmox-lab/) | Run a Proxmox VE server or cluster from plain-language requests: VMs, LXC containers, cloud-init templates, snapshots, host bridges/VLANs, SDN, and whole multi-machine labs built from one prompt. |
+| [vmware-lab-ops](vmware-lab-ops/) | Operate a VMware Workstation / Fusion Pro lab: `vmrun` VM lifecycle and snapshots, `.vmx` tuning, VMnet/LAN segments and 802.1Q VLAN trunks, cross-host SSH pivoting, stateless `iptables` firewalls, and disaster-recovery triage — from the host, over SSH, or via the Cowork device shell. |
 
 ## Installing a skill
 
